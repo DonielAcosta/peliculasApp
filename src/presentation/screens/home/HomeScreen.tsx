@@ -1,11 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import { View, ActivityIndicator } from 'react-native';
+import { View } from 'react-native';
 import { useMovies } from '../../hooks/useMovies';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { PosterCarousel } from '../../components/movies/PosterCarousel';
 import { HorizontalCarousel } from '../../components/movies/HorizontalCarousel';
+import { FullScreenLoader } from '../../components/loaders/FullScreenLoader';
 
 export const HomeScreen = () => {
   const { top } = useSafeAreaInsets();
@@ -13,9 +14,7 @@ export const HomeScreen = () => {
 
   if (isLoading) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large" />
-      </View>
+      <FullScreenLoader/>
     );
   }
 

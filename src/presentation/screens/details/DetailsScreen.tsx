@@ -5,6 +5,7 @@ import { RootStackParams } from '../../navigation/Navigation';
 import { useMovie } from '../../hooks/useMovie';
 import { MovieHeader } from '../../components/movies/movie/MovieHeader';
 import { MovieDetails } from '../../components/movies/movie/MovieDetails';
+import { FullScreenLoader } from '../../components/loaders/FullScreenLoader';
 
 interface Props extends StackScreenProps<RootStackParams,'Details'>{
 
@@ -17,7 +18,11 @@ export const DetailsScreen = ({route}:Props) => {
   console.log('Movie ID:', movieId); // Verificar el ID de la película
   const {isLoading,movie,cast =[]} = useMovie(movieId);
 
-  if(isLoading) {return <Text>Cargando...</Text>;}
+  if (isLoading) {
+    return (
+      <FullScreenLoader/>
+    );
+  }
   return (
     <ScrollView>
         {/* [header] */}
